@@ -38,7 +38,7 @@ cd vendor/evolution-priv/keys
 ./keys.sh
 cd -
 
-grep -q "vendor/evolution-priv/keys/keys.mk" device/xiaomi/platina/BoardConfig.mk || sed -i '$ a -include vendor/evolution-priv/keys/keys.mk' device/xiaomi/platina/BoardConfig.mk
+grep -q "vendor/evolution-priv/keys/keys.mk" device/xiaomi/platina/BoardConfig.mk || sed -i '$ a include vendor/evolution-priv/keys/keys.mk' device/xiaomi/platina/BoardConfig.mk
 tail -5 device/xiaomi/platina/BoardConfig.mk
 
 echo "==> Lunching target..."

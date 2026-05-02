@@ -7,11 +7,11 @@
     <remote name="rom"
         fetch="https://github.com/AndroidOne-Experience/" />
     <remote name="device"
-        fetch="https://github.com/Crave-platina/" />
+        fetch="https://github.com/andrey167/" />
 
     <!-- Device Sources -->
     <project path="device/xiaomi/platina" name="android_device_xiaomi_platina" remote="device" revision="aosp" clone-depth="1" />
-    <project path="kernel/xiaomi/platina" name="platinum_kernel_xiaomi_platina" remote="main" revision="eas-bpf-new-vic" clone-depth="1" />
+    <project path="kernel/xiaomi/platina" name="platinum_kernel_xiaomi_platina" remote="device" revision="Main" clone-depth="1" />
     <project path="vendor/xiaomi/platina" name="android_vendor_xiaomi_platina" remote="device" revision="aosp" clone-depth="1" />
 
     <!-- ROM Sources -->

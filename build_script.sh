@@ -9,7 +9,7 @@ rm -rf .repo/local_manifests prebuilts/clang/host/linux-x86
 
 echo "==> Initializing repo..."
 repo init -u https://github.com/AndroidOne-Experience/manifest.git -b 15 --git-lfs
-git clone https://github.com/Crave-platina/android_local_manifests -b aosp .repo/local_manifests
+git clone https://github.com/andrey167/android_local_manifests -b aosp .repo/local_manifests
 
 ########################################
 # SYNC SOURCE
@@ -27,7 +27,7 @@ echo "==> Syncing source..."
 echo "==> Preparing environment..."
 . build/envsetup.sh
 
-export BUILD_USERNAME=han
+export BUILD_USERNAME=andrey167
 export BUILD_HOSTNAME=crave
 export TZ=Asia/Jakarta
 export KBUILD_USERNAME="$BUILD_USERNAME"

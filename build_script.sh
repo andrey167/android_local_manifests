@@ -8,17 +8,17 @@ echo "==> Resetting manifests and toolchain..."
 rm -rf .repo/local_manifests prebuilts/clang/host/linux-x86
 
 echo "==> Initializing repo..."
-repo init -u https://github.com/AndroidOne-Experience/manifest.git -b 15 --git-lfs
-git clone https://github.com/andrey167/android_local_manifests -b aosp .repo/local_manifests
+repo init -u https://github.com/AndroidOne-Experience/manifest.git -b 15 --depth=1 --git-lfs 
+git clone https://github.com/andrey167/android_local_manifests --depth=1 -b aosp .repo/local_manifests
 
 ########################################
 # SYNC SOURCE
 ########################################
 
 echo "==> Syncing source..."
+repo sync -c -j32 --force-sync --no-clone-bundle --no-tags
 /opt/crave/resync.sh
-/opt/crave/resync.sh
-/opt/crave/resync.sh
+
 
 ########################################
 # BUILD SETUP
@@ -33,24 +33,19 @@ export TZ=Asia/Jakarta
 export KBUILD_USERNAME="$BUILD_USERNAME"
 export KBUILD_HOSTNAME="$BUILD_HOSTNAME"
 
+git clone https://github.com/Evolution-X/vendor_evolution-priv_keys-template vendor/evolution-priv/keys
+cd vendor/evolution-priv/keys
+./keys.sh
+cd -
+
+grep -q "vendor/evolution-priv/keys/keys.mk" device/xiaomi/platina/BoardConfig.mk || sed -i '$ a -include vendor/evolution-priv/keys/keys.mk' device/xiaomi/platina/BoardConfig.mk
+tail -5 device/xiaomi/platina/BoardConfig.mk
+
 echo "==> Lunching target..."
 lunch aosp_platina-bp1a-user
 
 echo "==> Cleaning previous build outputs..."
 m installclean
 
-########################################
-# BUILD EXECUTION
-########################################
-
-echo "==> Starting target-files build..."
-if m target-files-package otatools; then
-    echo "==> Build completed successfully"
-    echo "==> Running sign_script.sh..."
-    bash sign_script.sh
-else
-    echo "Build failed — signing skipped!"
-    exit 1
-fi
 
 echo "==> All tasks completed successfully!"

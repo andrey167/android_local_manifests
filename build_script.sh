@@ -47,6 +47,6 @@ lunch aosp_platina-bp1a-user
 
 echo "==> Cleaning previous build outputs..."
 m installclean
-
+m otaimage
 
 echo "==> All tasks completed successfully!"

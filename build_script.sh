@@ -32,7 +32,8 @@ export BUILD_HOSTNAME=crave
 export TZ=Asia/Jakarta
 export KBUILD_USERNAME="$BUILD_USERNAME"
 export KBUILD_HOSTNAME="$BUILD_HOSTNAME"
-d -i 's/String modemService = tm.getModemService();/String modemService = "";/' packages/services/Telephony/src/com/android/phone/CarrierConfigLoader.java
+sed -i 's/tm.getModemService()/""/g' \
+packages/services/Telephony/src/com/android/phone/CarrierConfigLoader.java
 grep -n "modemService" packages/services/Telephony/src/com/android/phone/CarrierConfigLoader.java
 
 git clone https://github.com/Evolution-X/vendor_evolution-priv_keys-template vendor/evolution-priv/keys

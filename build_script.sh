@@ -10,7 +10,7 @@ rm -rf device/xiaomi
 rm -rf packages/services/Telephony
 echo "==> Initializing repo..."
 repo init -u https://github.com/AndroidOne-Experience/manifest.git -b 15 --depth=1 --git-lfs 
-git clone https://github.com/andrey167/android_local_manifests --depth=1 -b aosp .repo/local_manifests
+git clone https://github.com/xc112lg/android_local_manifests --depth=1 -b aosp .repo/local_manifests
 
 ########################################
 # SYNC SOURCE

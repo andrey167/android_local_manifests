@@ -37,10 +37,7 @@ sed -i 's/tm.getModemService()/""/g' \
 packages/services/Telephony/src/com/android/phone/CarrierConfigLoader.java
 grep -n "modemService" packages/services/Telephony/src/com/android/phone/CarrierConfigLoader.java
 
-git clone https://github.com/Evolution-X/vendor_evolution-priv_keys-template vendor/evolution-priv/keys
-cd vendor/evolution-priv/keys
-./keys.sh
-cd -
+git clone https://github.com/xc112lg/platinakeys vendor/evolution-priv/keys
 
 grep -q "vendor/evolution-priv/keys/keys.mk" device/xiaomi/platina/BoardConfig.mk || sed -i '$ a -include vendor/evolution-priv/keys/keys.mk' device/xiaomi/platina/aosp_platina.mk
 #sed -i 's/PRODUCT_CERTIFICATE_OVERRIDES/PRODUCT_PACKAGE_NAME_OVERRIDES/g' vendor/evolution-priv/keys/keys.mk
